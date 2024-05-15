@@ -1,13 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminSectionComponent } from './admin-section/admin-section.component';
-import { UserSectionComponent } from './user-section/user-section.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { isAdminGuard } from './core/is-admin.guard';
+import { isConnectedGuard } from './core/is-connected.guard';
+import { LoginComponent } from './pages/login/login.component';
 
 //create a route to navigate to component adminSection
 const routes: Routes = [
-  { path: 'admin', component: AdminSectionComponent },
-  { path: 'user', component: UserSectionComponent },
-  { path: '', redirectTo: 'user', pathMatch: 'full' },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [isConnectedGuard],
+  },
+  { path: 'admin', component: AdminComponent, canActivate: [isAdminGuard] },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
