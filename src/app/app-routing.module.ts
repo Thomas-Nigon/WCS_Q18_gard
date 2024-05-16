@@ -14,7 +14,11 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [isConnectedGuard],
   },
-  { path: 'admin', component: AdminComponent, canActivate: [isAdminGuard] },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [isAdminGuard],
+  },
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
 ];

@@ -6,8 +6,11 @@ import { Injectable } from '@angular/core';
 export class UserService {
   constructor() {}
   private connected: boolean = false;
-  private role: string = 'anonymous';
+  private role: string = 'admin';
   getRole() {
+    return this.role;
+  }
+  checkRole(): string {
     return this.role;
   }
   isConnected(): boolean {
